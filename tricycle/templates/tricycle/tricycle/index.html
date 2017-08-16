@@ -1,0 +1,55 @@
+{% extends "tricycle/header.html" %}
+{%block title%}Home {%endblock%}
+{%block li3%}active{%endblock%}
+{% block content %}
+
+
+<h1>Tricycle</h1>
+<table class = "table table-hover">
+		<tr>
+		<td><h5>Body no.</h5></td>
+		<td><h5>Date Registered</h5></td>
+		<td><h5>Operator/Owner</h5></td>
+		<td><h5>Driver</h5></td>
+
+		
+		<td></td>
+		</tr>
+		
+	{% for tric in object_list%}	
+	<tr>
+		<td><h5>{{tric.body_number}}</h5></td>
+		<td><h5>{{tric.date_registered}}</h5></td>
+		<td><h5>{{tric.operator}}</h5></td>
+		<td><h5>{{tric.driver}}</h5></td>
+		
+		<td>
+			<div class="form-inline">
+				<form action="{%url 'tricycle:tricycle-details' tric.id %}" class="form-group form-inline">
+					<input type="hidden" value="{{ tric.id }}">
+					<button><span class="glyphicon glyphicon-eye-open"></span></button>
+				</form>
+				<form action="{%url 'tricycle:tricycle-edit' tric.id %}"  method = "get"class="form-group form-inline">
+					<!-- {% csrf_token %} -->
+					<input type="hidden" value="{{ tric.id }}">
+					<button><span class="glyphicon glyphicon-pencil"></span></button>
+				</form>
+
+				<form action="{% url 'tricycle:tricycle-delete' tric.id %}" method="post"class="form-group form-inline">
+					{% csrf_token %}
+					<input type="hidden" value="{{ tric.id }}">
+					<button><span class="glyphicon glyphicon-remove"></span></button>
+				</form>
+				
+
+		    </div>
+			
+		</td>
+		
+	</tr>
+	{% endfor %}
+</table>
+
+
+
+{% endblock%}

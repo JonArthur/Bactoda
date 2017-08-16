@@ -1,0 +1,20 @@
+{% extends "tricycle/header.html" %}
+
+{% block content %}
+<br><br>
+<div class="container">
+<div class="col-md-10">
+	<form class ="form-horizontal" action ="" method="post" enctype ="multipart/form-data">
+	{% csrf_token %}
+	{%include 'tricycle/operator-form-template.html'%}
+	<div class = "form-group">
+	<div class = "col-sm-offset-2">
+	<button class ="btn btn-primary" type = "submit">Submit</button>
+	</div>	
+	</div>
+</from>
+</div>
+
+
+</div>
+{% endblock%}

@@ -1,0 +1,56 @@
+{% extends "tricycle/header.html" %}
+{%block title%}Driver-List{%endblock%}
+{%block li2%}active{%endblock%}
+{% block content %}
+
+
+<h1>Drivers</h1>
+<table class = "table table-hover">
+		<tr>
+		<td><h5>First Name</h5></td>
+		<td><h5>Last Name</h5></td>
+		<td><h5>Age</h5></td>
+		<td><h5>Gender</h5></td>
+		<td><h5>Date Registered</h5></td>
+		<td><h5>Address</h5></td>
+		<td></td>
+		</tr>
+		
+	{% for driver in object_list%}	
+	<tr>
+		<td><h5>{{driver.first_name}}</h5></td>
+		<td><h5>{{driver.last_name}}</h5></td>
+		<td><h5>{{driver.age}}</h5></td>
+		<td><h5>{{driver.gender}}</h5></td>
+		<td><h5>{{driver.date_registered}}</h5></td>
+		<td><h5>{{driver.address}}</h5></td>
+		<td>
+			<div class="form-inline">
+				<form action="{%url 'tricycle:driver-details' driver.id%}" class="form-group form-inline">
+					<input type="hidden" value="{{ driver.id }}">
+					<button><span class="glyphicon glyphicon-eye-open"></span></button>
+				</form>
+
+				<form action="{%url 'tricycle:driver-edit' driver.id%}"  method = "get"class="form-group form-inline">
+					<!-- {% csrf_token %} -->
+					<input type="hidden" value="{{ driver.id }}">
+					<button><span class="glyphicon glyphicon-pencil"></span></button>
+				</form>
+
+				<form action="{% url 'tricycle:driver-delete' driver.id%}" method="post"class="form-group form-inline">
+					{% csrf_token %}
+					<input type="hidden" value="{{ driver.id }}">
+					<button><span class="glyphicon glyphicon-remove"></span></button>
+				</form>
+
+		    </div>
+			
+		</td>
+		
+	</tr>
+	{% endfor %}
+</table>
+
+
+
+{% endblock%}

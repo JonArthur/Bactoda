@@ -1,0 +1,74 @@
+{% extends "tricycle/header.html" %}
+{%block title%}Driver Details{%endblock%}
+{%block li2%}active{%endblock%}
+
+{% block content %}
+  <div class="container">
+    <h1>Detail Page</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <img src="{{driver.image.url}}" height="140" width="140" class="img-circle">
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  <br>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      
+      <div class="row">
+        <div class="col-md-2"><h3 class="panel-title">ID</h3></div>
+        <div class="col-md-4">First Name</div>
+        <div class="col-md-4">Last Name</div>
+        <div class="col-md-2">Gender</div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-2">{{driver.id}}</div>
+        <div class="col-md-4">{{driver.first_name}}</div>
+        <div class="col-md-4">{{driver.last_name}}</div>
+        <div class="col-md-2">{{driver.gender}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      
+      <div class="row">
+        <div class="col-md-5"><h3 class="panel-title">Date Registered</h3></div>
+        <div class="col-md-7">Address</div>
+        
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-5">{{driver.date_registered}}</div>
+        <div class="col-md-7">{{driver.address}}</div>
+        
+      </div>
+    </div>
+  </div>
+  <h1>Drived Tricycle</h1>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      
+      <div class="row">
+        <div class="col-md-4"><h3 class="panel-title">Body Number</h3></div>
+        <div class="col-md-4">Date Registered</div>
+        <div class="col-md-4">Owner</div>
+        
+      </div>
+    </div>
+    
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">{{driver.tricycle.body_number}}</div>
+          <div class="col-md-4">{{driver.tricycle.date_registered}}</div>
+          <div class="col-md-4">{{driver.tricycle.operator}}</div>
+        </div>
+      </div>
+    
+  </div>
+{% endblock%}

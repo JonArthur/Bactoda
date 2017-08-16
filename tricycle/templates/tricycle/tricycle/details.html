@@ -1,0 +1,112 @@
+{% extends "tricycle/header.html" %}
+{%block title%}Details{%endblock%}
+{%block li3%}active{%endblock%}
+{% block content %}
+<div class="container">
+<h1>Detail Page</h1>
+<div class="col-md-12">
+  <div class="col-md-4"></div>
+  
+  <div class="col-md-4"></div>
+</div>
+
+</div>
+<br>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    
+   <div class="row">
+      <div class="col-md-2"><h3 class="panel-title">ID</h3></div>
+	    <div class="col-md-4">Body Number</div>
+ 	    <div class="col-md-4">Date Registered</div>
+	    
+
+   </div> 
+  </div>
+  <div class="panel-body">
+    <div class="row">
+            <div class="col-md-2">{{tricycle.id}}</div>
+	    <div class="col-md-4">{{tricycle.body_number}}</div>
+ 	    <div class="col-md-4">{{tricycle.date_registered}}</div>
+	     <div class="col-md-2">{{tricycle.gender}}</div>
+        </div> 
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    
+   <div class="row">
+            <div class="col-md-5"><h3 class="panel-title">Owner</h3></div>
+	    <div class="col-md-7">Driver</div>
+ 	    
+   </div> 
+  </div>
+  <div class="panel-body">
+    <div class="row">
+            <div class="col-md-5">{{tricycle.operator}}</div>
+	    <div class="col-md-7">{{tricycle.driver}}</div>
+ 	    
+        </div> 
+  </div>
+</div>
+
+<h1>Owner Details</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    
+   <div class="row">
+      <div class="col-md-3"><h3 class="panel-title">ID</h3></div>
+      <div class="col-md-3">First Name</div>
+      <div class="col-md-3">Last Name</div> 
+      <div class="col-md-3">View</div>  
+   </div>  
+   </div> 
+ 
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-3">{{tricycle.operator.id}}</div>
+      <div class="col-md-3">{{tricycle.operator.first_name}}</div>
+      <div class="col-md-3">{{tricycle.operator.last_name}}</div>
+      <div class="col-md-3">
+        <form action="{%url 'tricycle:driver-details' tricycle.driver.id %}" class="form-group form-inline">
+          <input type="hidden" value="{{ tricycle.driver.id }}">
+          <button><span class="glyphicon glyphicon-eye-open"></span></button>
+        </form>
+      </div>
+    </div> 
+  </div>
+  </div>
+<h1>Driver Details</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    
+   <div class="row">
+      <div class="col-md-3"><h3 class="panel-title">ID</h3></div>
+      <div class="col-md-3">First Name</div>
+      <div class="col-md-3">Lat Name</div> 
+       <div class="col-md-3">View</div> 
+   </div> 
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-3">{{tricycle.driver.id}}</div>
+      <div class="col-md-3">{{tricycle.driver.first_name}}</div>
+      <div class="col-md-3">{{tricycle.driver.last_name}}</div>
+      <div class="col-md-3">
+        <form action="{%url 'tricycle:driver-details' tricycle.driver.id %}" class="form-group form-inline">
+          <input type="hidden" value="{{ tricycle.driver.id }}">
+          <button><span class="glyphicon glyphicon-eye-open"></span></button>
+        </form>
+      </div>
+    </div> 
+  </div>
+
+</div>
+
+{% endblock%}

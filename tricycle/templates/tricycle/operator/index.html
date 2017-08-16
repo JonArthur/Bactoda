@@ -1,0 +1,56 @@
+{% extends "tricycle/header.html" %}
+{%block title%}Home {%endblock%}
+{%block li1%}active{%endblock%}
+{% block content %}
+
+
+<h1>Operators</h1>
+<table class = "table table-hover">
+		<tr>
+		<td><h5>First Name</h5></td>
+		<td><h5>Last Name</h5></td>
+		<td><h5>Age</h5></td>
+		<td><h5>Gender</h5></td>
+		<td><h5>Address</h5></td>
+		<td><h5>Date Registered</h5></td>
+		<td></td>
+		</tr>
+		
+	{% for operator in object_list %}	
+	<tr>
+		<td><h5>{{operator.first_name}}</h5></td>
+		<td><h5>{{operator.last_name}}</h5></td>
+		<td><h5>{{operator.age}}</h5></td>
+		<td><h5>{{operator.gender}}</h5></td>
+		<td><h5>{{operator.address}}</h5></td>
+		<td><h5>{{operator.date_registered}}</h5></td>
+		<td>
+			<div class="form-inline">
+				<form action="{%url 'tricycle:details' operator.id%}" class="form-group form-inline">
+					<input type="hidden" value="{{ operator.id }}">
+					<button><span class="glyphicon glyphicon-eye-open"></span></button>
+				</form>
+
+				<form action="{%url 'tricycle:edit' operator.id%}" class="form-group form-inline">
+					{% csrf_token %}
+					<input type="hidden" value="{{ operator.id }}">
+					<button><span class="glyphicon glyphicon-pencil"></span></button>
+				</form>
+
+				<form action="{% url 'tricycle:delete' operator.id%}" method="post"class="form-group form-inline">
+					{% csrf_token %}
+					<input type="hidden" value="{{ operator.id }}">
+					<button><span class="glyphicon glyphicon-remove"></span></button>
+				</form>
+
+		    </div>
+			
+		</td>
+		
+	</tr>
+	{% endfor %}
+</table>
+
+
+
+{% endblock%}
