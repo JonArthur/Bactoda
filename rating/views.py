@@ -10,6 +10,7 @@ import datetime
 class RateCreateView(CreateView):
 	model = Rate
 	form_class = RateForm
+
 class IndexView(ListView):
 	# query = request.Get.get("query")
 	template_name = 'rating/index.html'
@@ -22,12 +23,30 @@ def current_datetime(request):
     tric = get_object_or_404(Tricycle,body_number = int(query))
     driver = tric.driver
     rating = driver.rate_set.all()
-    html = "<html><body>It is now %s.<br>	</body></html>" % query
     return render(request, 'rating/detail.html', {
             'driver': tric,
             'ratings':rating,
             })
-   
+
+def rate(request,pk):
+    form = RateForm(request.POST)
+    rate = Rate()
+    driver = Driver.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        rate.name = request.POST.get("name")
+        rate.email = request.POST.get("email")
+        rate.comment = request.POST.get("comment")
+        rate.driver = driver
+        rate.save()
+        return HttpResponse("<h1>"+request.POST.get("email")+"--"+driver.first_name+"--"+request.POST.get("comment")+"</h1>")
+
+    return render(request, 'rating/rate_form.html', {
+            'form': RateForm,
+            })
+    
+
+
 # def index(request):
 #     driver = Driver.objects.all()
 #     output = ', '.join([q.first_name for q in driver])

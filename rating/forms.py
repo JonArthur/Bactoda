@@ -7,5 +7,5 @@ class RateForm(forms.ModelForm):
 	email= forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
 	class Meta:
 		model = Rate
-		fields = ['name','comment','email','driver']
+		fields = ['name','comment','email']
 		

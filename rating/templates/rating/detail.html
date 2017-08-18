@@ -1,5 +1,7 @@
 <p>{{driver.driver}}</p>
 
 {% for rating in ratings%}
-{{rating.comment}}
+<li>{{rating.comment}}</li>
 {%endfor%}
+
+<a href="{%url 'rating:rate' driver.driver.id%}">rate</a>
