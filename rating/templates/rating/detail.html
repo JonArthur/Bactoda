@@ -1,7 +1,34 @@
-<p>{{driver.driver}}</p>
+{% extends "rating/header.html" %}
+{%block home%}active{%endblock%}
+{%block content%}
 
+Driver Details
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+   <div class="row">
+      <div class="col-md-2"><h3 class="panel-title">Name</h3></div>
+	    <div class="col-md-4">Tricycle Body Number</div>
+ 	    <div class="col-md-4">Contact</div>
+	    
+
+   </div> 
+  </div>
+  <div class="panel-body">
+    <div class="row">
+        <div class="col-md-2">{{driver.driver.first_name}} {{driver.driver.last_name}}</div>
+	    <div class="col-md-4">{{driver.body_number}}</div>
+ 	    <div class="col-md-4">...</div>
+	    <a class ="btn btn-primary"href="{%url 'rating:rate' driver.driver.id%}">Rate!</a>
+    </div> 
+  </div>
+</div>
+
+<h3>Feedbacks on this driver</h3>
 {% for rating in ratings%}
-<li>{{rating.comment}}</li>
+<div class="alert alert-success" role="alert"><strong>{{rating.name}}</strong> said {{rating.comment}}</div>
+
 {%endfor%}
 
-<a href="{%url 'rating:rate' driver.driver.id%}">rate</a>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from tricycle.models import Driver,Tricycle
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView
@@ -39,8 +39,7 @@ def rate(request,pk):
         rate.comment = request.POST.get("comment")
         rate.driver = driver
         rate.save()
-        return HttpResponse("<h1>"+request.POST.get("email")+"--"+driver.first_name+"--"+request.POST.get("comment")+"</h1>")
-
+        return redirect('rating:index')
     return render(request, 'rating/rate_form.html', {
             'form': RateForm,
             })

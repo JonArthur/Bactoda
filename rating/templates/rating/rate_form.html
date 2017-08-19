@@ -1,3 +1,6 @@
+{% extends "rating/header.html" %}
+{%block home%}active{%endblock%}
+{%block content%}
 <div class="container">
 	<form class ="form-horizontal" action ="" method="post" enctype ="multipart/form-data">
 			{% csrf_token %}
@@ -24,3 +27,4 @@
 			</div>
 	</from>
 </div>
+{% endblock %}
