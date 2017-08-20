@@ -13,10 +13,10 @@ class OperatorForm(forms.ModelForm):
 	last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
 	age = forms.CharField(widget=forms.NumberInput(attrs={'class':'form-control'}))
 	address= forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-	
+	contact_number=  forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
 	class Meta():
 		model = Operator
-		fields = ['first_name','last_name','age','gender','address','date_registered','image']
+		fields = ['first_name','last_name','age','gender','address','date_registered','contact_number','image']
 class DriverForm(forms.ModelForm):
 	gender = (
     ('M', 'Male'),
@@ -28,9 +28,10 @@ class DriverForm(forms.ModelForm):
 	last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
 	age = forms.CharField(widget=forms.NumberInput(attrs={'class':'form-control'}))
 	address= forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+	contact_number=  forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
 	class Meta():
 		model = Driver
-		fields = ['first_name','last_name','age','gender','address','date_registered','image']
+		fields = ['first_name','last_name','age','gender','address','date_registered','contact_number','image']
 			
 class UserForm(forms.ModelForm):
 	

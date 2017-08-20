@@ -37,6 +37,7 @@ def rate(request,pk):
         rate.name = request.POST.get("name")
         rate.email = request.POST.get("email")
         rate.comment = request.POST.get("comment")
+        rate.rating = request.POST.get("rating")
         rate.driver = driver
         rate.save()
         return redirect('rating:index')

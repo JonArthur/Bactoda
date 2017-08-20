@@ -65,7 +65,7 @@ class DriverUpdate(LoginRequiredMixin,generic.UpdateView):
 class DriverDelete(LoginRequiredMixin,generic.DeleteView):
     login_url = '/admin/login/'
     model = Driver
-    success_url = reverse_lazy('tricycle:index')
+    success_url = reverse_lazy('tricycle:driver-index')
 
 
 #Tricycle Views

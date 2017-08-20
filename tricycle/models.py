@@ -9,6 +9,7 @@ class Operator(models.Model):
     gender = models.CharField(max_length=1)
     address = models.CharField(max_length = 300)
     date_registered = models.DateField()  
+    contact_number = models.CharField(max_length = 15)
     image = models.FileField()  
     def __str__(self):
         return self.first_name+" "+self.last_name
@@ -23,6 +24,7 @@ class Driver(models.Model):
     gender = models.CharField(max_length=1)
     address = models.CharField(max_length = 300)
     date_registered = models.DateField()
+    contact_number = models.CharField(max_length = 15)
     image = models.FileField() 
     def __str__(self):
         return str(self.id)+" "+self.first_name+" "+self.last_name
