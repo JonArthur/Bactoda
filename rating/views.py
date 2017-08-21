@@ -6,6 +6,7 @@ from django.views.generic import ListView
 from .forms import RateForm
 from .models import Rate
 from tricycle.models import Driver
+from django.db.models import Avg
 import datetime
 class RateCreateView(CreateView):
 	model = Rate
@@ -23,9 +24,11 @@ def current_datetime(request):
     tric = get_object_or_404(Tricycle,body_number = int(query))
     driver = tric.driver
     rating = driver.rate_set.all()
+    avg_rating = driver.rate_set.all().aggregate(Avg('rating'))
     return render(request, 'rating/detail.html', {
             'driver': tric,
             'ratings':rating,
+            'avg_rating':avg_rating,
             })
 
 def rate(request,pk):

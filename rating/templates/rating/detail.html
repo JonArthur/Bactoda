@@ -4,9 +4,14 @@
 
 <h3>Driver Details</h3>
 <div class="row">
+
     <div class="col-md-4"></div>
     <div class="col-md-4">
+    	<div class="container">
       <img src="{{driver.driver.image.url}}" height="140" width="140" class="img-circle">
+     
+  </div>
+      
     </div>
     <div class="col-md-4"></div>
   </div>
@@ -15,18 +20,21 @@
   <div class="panel-heading">
    <div class="row">
       <div class="col-md-3"><h3 class="panel-title">Name</h3></div>
-	    <div class="col-md-3">Tricycle Body Number</div>
- 	    <div class="col-md-3">Contact</div>
-	    
+	    <div class="col-md-2">Tricycle Body Number</div>
+ 	    <div class="col-md-2">Contact</div>
+ 	    <div class="col-md-2">Rating</div>
+	    <div class="col-md-2"></div>
 
    </div> 
   </div>
   <div class="panel-body">
     <div class="row">
         <div class="col-md-3">{{driver.driver.first_name}} {{driver.driver.last_name}}</div>
-	    <div class="col-md-3">{{driver.body_number}}</div>
- 	    <div class="col-md-3">{{driver.driver.contact_number}}</div>
-	    <a class ="btn btn-primary"href="{%url 'rating:rate' driver.driver.id%}">Rate!</a>
+	    <div class="col-md-2">{{driver.body_number}}</div>
+ 	    <div class="col-md-2">{{driver.driver.contact_number}}</div>
+ 	    <div class="col-md-2">{{avg_rating.rating__avg}}/5</div>
+ 	    <div class="col-md-2"><a class ="btn btn-primary"href="{%url 'rating:rate' driver.driver.id%}">Rate!</a></div>
+	    
     </div> 
   </div>
 </div>
