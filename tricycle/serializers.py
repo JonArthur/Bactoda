@@ -11,3 +11,8 @@ class OperatorSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Operator
 		fields = '__all__'
+
+class TricycleSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Tricycle
+		fields = '__all__'

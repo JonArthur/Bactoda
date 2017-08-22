@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import DriverSerializer,OperatorSerializer
+from .serializers import DriverSerializer,OperatorSerializer,TricycleSerializer
 
 
 class OperatorIndexView(LoginRequiredMixin,generic.ListView):
@@ -120,6 +120,17 @@ class OperatorList(APIView):
     def get(self,request):
         operator = Operator.objects.all()
         serializer = OperatorSerializer(operator,many=True)
+        return Response(serializer.data)
+        pass
+
+    def post(self):
+        pass 
+
+class TricycleList(APIView):
+    
+    def get(self,request):
+        tricycle = Tricycle.objects.all()
+        serializer = TricycleSerializer(tricycle,many=True)
         return Response(serializer.data)
         pass
 
