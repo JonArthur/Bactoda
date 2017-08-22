@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^home/', include('tricycle.urls')),
     url(r'^', include('rating.urls')),
     url(r'^api/driver/',views.DriverList.as_view()),
+    url(r'^api/operator/',views.OperatorList.as_view()),
     
 ]
 
