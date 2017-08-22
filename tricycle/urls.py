@@ -21,6 +21,7 @@ app_name = 'tricycle'
 urlpatterns = [
     
     url(r'^logout/',include(admin.site.urls)),
+   
     url(r'^$',views.OperatorIndexView.as_view(),name="index"),
     url(r'^operator/(?P<pk>[0-9]+)$',views.DetailView.as_view(),name="details"),
     url(r'^operator/add/$',views.OperatorCreate.as_view(),name='add'),
